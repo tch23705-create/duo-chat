@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>二人专属聊天</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <div class="main">二人专属聊天</div>
+      <div class="sub" id="roomInfo">未加入房间</div>
+    </div>
+    <div class="members" id="members">0/2</div>
+  </header>
+
+  <main class="chat" id="chat"></main>
+
+  <footer class="composer">
+    <input id="pickImage" type="file" accept="image/*" hidden />
+    <button class="iconBtn" id="btnImage" title="图片">🖼️</button>
+
+    <button class="iconBtn" id="btnRecord" title="语音">🎙️</button>
+
+    <textarea id="text" rows="1" placeholder="输入消息，回车发送（Shift+Enter换行）"></textarea>
+    <button class="sendBtn" id="send">发送</button>
+  </footer>
+
+  <div class="modal show" id="modal">
+    <div class="card">
+      <h2>加入聊天</h2>
+      <label>昵称</label>
+      <input id="name" maxlength="20" placeholder="比如：韩老师" />
+      <label>房间码（两个人填同一个）</label>
+      <input id="roomCode" maxlength="20" placeholder="如：HTC2026" />
+      <label>房间密码</label>
+      <input id="password" maxlength="64" placeholder="设置一个密码" type="password" />
+      <button class="primary" id="join">进入</button>
+      <p class="hint">
+        第一个进入的人会创建房间并设置密码；第二个人必须输入相同的房间码+密码才能进。
+      </p>
+      <p class="hint small">语音录制需要 HTTPS（部署后通常自动是 HTTPS）。</p>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
